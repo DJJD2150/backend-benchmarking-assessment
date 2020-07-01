@@ -4,7 +4,6 @@ import importlib
 import timeit
 import json
 import functools
-
 __author__ = "madarp"
 
 
@@ -15,7 +14,8 @@ class TestAnagrams(unittest.TestCase):
     """
     def setUp(self):
         module_name = 'anagrams'
-        """import the module(s) under test, in the context of this test fixture"""
+        """import the module(s) under test, in the context of this test
+        fixture"""
         try:
             self.ana = importlib.import_module(module_name)
         except ImportError:
@@ -27,8 +27,8 @@ class TestAnagrams(unittest.TestCase):
         t = timeit.Timer(f)
         actual_time = round(t.timeit(number=1), 3)
         failure_text = (
-            f'\nfind_anagrams() took {actual_time:.03f} seconds, which exceeds the '
-            f'benchmark of {benchmark:.03f} seconds'
+            f'\nfind_anagrams() took {actual_time:.03f} seconds, which '
+            f'exceeds the benchmark of {benchmark:.03f} seconds'
             )
         self.assertLessEqual(actual_time, benchmark, failure_text)
 
@@ -48,7 +48,6 @@ class TestAnagrams(unittest.TestCase):
             short_list = f.read().split()
         self.run_find_anagrams(short_list, 0.030)
 
-    @unittest.skip("Remove this line once short test passes")
     def test_long(self):
         """Check find_anagrams() with long word list."""
         with open("words/long.txt") as f:
